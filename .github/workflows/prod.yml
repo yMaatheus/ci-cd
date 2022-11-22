@@ -28,6 +28,6 @@ jobs:
       - name: deploy para netlify
         uses: jsmrcaga/action-netlify-deploy@v1.1.0
         with:
-          NETLIFY_AUTH_TOKEN: ${{ GH_NETLIFY_AUTH_TOKEN }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.GH_NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: bce87cd4-1a99-4649-8b11-46982105907c
           NETLIFY_DEPLOY_TO_PROD: true
