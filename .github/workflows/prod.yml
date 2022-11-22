@@ -1,0 +1,33 @@
+name: "Deploy para produção"
+
+# Evento - Quando deve acontecer ações
+on:
+  push:
+    branches:
+      - "main"
+
+# Ações - Passos para deploy
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout do projeto
+        uses: actions/checkout@v3
+
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: instalando libs
+        run: npm install
+
+      - name: build do projeto
+        run: npm run build
+
+      - name: deploy para netlify
+        uses: jsmrcaga/action-netlify-deploy@v1.1.0
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ GH_NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: bce87cd4-1a99-4649-8b11-46982105907c
+          NETLIFY_DEPLOY_TO_PROD: true
