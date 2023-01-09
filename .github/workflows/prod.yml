@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Checkout to correct branch
         uses: actions/checkout@v3
-      - name: Calling ssh_remote_commands action
+      - name: Calling ssh_remote_commands actions
         uses: Sithi5/remote-ssh-commands-action@main
         with:
           SSH_USER: ${{ secrets.SSH_USER }}
